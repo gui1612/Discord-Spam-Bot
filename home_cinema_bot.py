@@ -1,12 +1,8 @@
-import nest_asyncio
 from discord.ext import commands
 import discord
 from os import listdir
 from os.path import isfile, join
 import time, random, sys
-
-# use this to monkey patch the asyncio event loop
-nest_asyncio.apply()
 
 pass_file = open("pass.pass", "r")
 
@@ -36,7 +32,6 @@ emotes = ["kekw", "pepega", "sadge", "peepohappy", "monkaW", "ELIMINAR",
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
-
 
 @bot.command(name="fuckyou", help="fuck you")
 async def fuck_you(ctx):
