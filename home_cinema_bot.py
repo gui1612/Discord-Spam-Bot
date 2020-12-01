@@ -8,7 +8,12 @@ import time, random, sys
 # use this to monkey patch the asyncio event loop
 nest_asyncio.apply()
 
-TOKEN = "Nzc1MDkwNjkxNjEyNDc1NDAy.X6hRdQ.9ejMoxjaL0HBD5JLgc-tvHGPu-U"
+pass_file = open("pass.pass", "r")
+
+TOKEN = ""
+
+for line in pass_file:
+    TOKEN = line
 
 # 2
 bot = commands.Bot(command_prefix='$')
@@ -25,7 +30,7 @@ spamming_emotes = {}
 
 emotes = ["kekw", "pepega", "sadge", "peepohappy", "monkaW", "ELIMINAR",
           "pufavo", "pogchamp", "weirdchamp", "homies", "FeelsStrongMan",
-          "5head", "bruh", "caragomeu", "ehehe", "ok~1", "mds", "facho"]
+          "5head", "bruh", "caragomeu", "ehehe", "mds", "facho"]
 
 
 @bot.event
@@ -43,30 +48,28 @@ async def yomamasofat(ctx):
     await ctx.send("lol, no u")
 
 
-@bot.command(name="poke", help="be a annoying prick, poke a member >:)")
-async def poke(ctx, member: discord.Member):
+@bot.command(name="poke", help="be a annoying prick, poke a member >:) -NOT WORKING ????????")
+async def poke(ctx, member):
 
-    print(member)
+    the_message = ctx.message
 
-    if(False):
-        if(movie_name == ""):
-            await ctx.send("You need to provide a movie to display!!")
-            return
+    print(member.mention, the_message)
 
-    the_message: discord.Message = ctx.message
+    await ctx.send(member.mention)
 
     if(the_message):
         await the_message.delete()
 
-    await ctx.send(member.mention)
-
 
 @bot.command(name="kill")
 async def kill(ctx):
+
+    await ctx.message.delete()
+
     sys.exit(0)
 
 @bot.command(name="clear", help="clears the last 10 messages", hidden=True)
-async def clear(ctx):
+async def clear(ctx, the_limit=100):
     the_message: discord.Message = ctx.message
 
     if(the_message):
@@ -77,8 +80,8 @@ async def clear(ctx):
     the_commands = list(map(lambda x: bot.command_prefix + x.name, bot.commands))
 
     if(the_channel):
-        async for message in the_channel.history():
-            if message.author.name == "Home Cinema" or message.content in the_commands:
+        async for message in the_channel.history(limit=the_limit):
+            if message.author.name == "Spam Bot" or message.content in the_commands:
                 await message.delete()
             else:
                 for command in the_commands:
