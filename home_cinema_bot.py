@@ -8,7 +8,7 @@ import time, random, sys
 # use this to monkey patch the asyncio event loop
 nest_asyncio.apply()
 
-TOKEN = "Nzc1MDkwNjkxNjEyNDc1NDAy.X6hRdQ.9ejMoxjaL0HBD5JLgc-tvHGPu-U"
+TOKEN = "the token here"
 
 # 2
 bot = commands.Bot(command_prefix='$')
