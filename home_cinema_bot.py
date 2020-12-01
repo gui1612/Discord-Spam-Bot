@@ -8,12 +8,16 @@ import time, random, sys
 # use this to monkey patch the asyncio event loop
 nest_asyncio.apply()
 
+<<<<<<< HEAD
 pass_file = open("pass.pass", "r")
 
 TOKEN = ""
 
 for line in pass_file:
     TOKEN = line
+=======
+TOKEN = "the token here"
+>>>>>>> a68b8f4473c426ee7555128985fdcfb6690251f8
 
 # 2
 bot = commands.Bot(command_prefix='$')
