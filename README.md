@@ -7,7 +7,7 @@ However, time went by and it suddenly became just a spam bot, made for giggles.
 
 ## Features:
 
-####  Regular Spam: `(Coming soon)`
+###  Regular Spam: `(Coming soon)`
 
 
 
