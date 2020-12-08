@@ -5,12 +5,12 @@ This project started as a kind of "text cinema" where someone would request a mo
 However, time went by and it suddenly became just a spam bot, made for giggles.
 
 
-
 ## Features:
 
-###  Regular Spam: `(Coming soon)`
+####  Regular Spam: `(Coming soon)`
 
-:shipit: If you have any idea, feel free to contact me or just make a PR :shipit:
+
+
 
                              Ooooh spammo mio...
                              .'
@@ -23,5 +23,6 @@ However, time went by and it suddenly became just a spam bot, made for giggles.
                            \.       
                            '      
 
-  
+
+  :shipit: If you have any idea, feel free to contact me or just make a PR :shipit:
   
