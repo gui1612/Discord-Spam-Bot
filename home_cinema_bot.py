@@ -85,7 +85,7 @@ async def clear(ctx, the_limit=100):
                         break
 
 
-@bot.command(name="spam_emote", help="Spams emotes continualsy (or a specified number of times) or one particular emote specified by the user")
+@bot.command(name="spam_emote", help="Spams emotes continuoulsy (or a specified number of times) or one particular emote specified by the user")
 async def spam_emote(ctx, emote_name: str = "no emote", num_times: int = -1):
 
     the_message: discord.Message = ctx.message
