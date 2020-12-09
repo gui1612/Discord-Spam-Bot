@@ -4,6 +4,9 @@ from os import listdir
 from os.path import isfile, join
 import time, random, sys
 
+
+# Files 
+
 pass_file = open("pass.pass", "r")
 
 TOKEN = ""
@@ -12,6 +15,9 @@ for line in pass_file:
     TOKEN = line
 
 bot = commands.Bot(command_prefix='$')
+
+
+# Global Variables
 
 scripts_path = "movie_scripts"
 
@@ -23,14 +29,20 @@ scripts_running = {}
 
 spamming_emotes = {}
 
-emotes = ["kekw", "pepega", "sadge", "peepohappy", "monkaW", "ELIMINAR",
+
+#Supported emotes 
+
+emotes = ["kekw", "pepega", "sadge", "peepohappy", "monkaW", "ELIMINAR",                 
           "pufavo", "pogchamp", "weirdchamp", "homies", "FeelsStrongMan",
-          "5head", "bruh", "caragomeu", "ehehe", "mds", "facho"]
+          "5head", "bruh", "caragomeu", "ehehe", "mds", "facho", "Exkirbyrainbow"]
 
 
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
+
+
+# fuckyou command
 
 @bot.command(name="fuckyou", help="fuck you")
 async def fuck_you(ctx):
@@ -38,11 +50,15 @@ async def fuck_you(ctx):
     await ctx.send("thats why")
 
 
+# yomamasofat command
+
 @bot.command(name="yomamasofat", help="lol")
 async def yomamasofat(ctx):
     print("running: yomamasofat")
     await ctx.send("lol, no u")
 
+
+# poke command
 
 @bot.command(name="poke", help="be a annoying prick, poke a member >:)")
 async def poke(ctx, member: discord.Member):
@@ -55,6 +71,8 @@ async def poke(ctx, member: discord.Member):
     if(the_message):
         await the_message.delete()
 
+
+#clear command
 
 @bot.command(name="clear", help="clears the last 10 messages", hidden=True)
 async def clear(ctx, the_limit=100):
@@ -78,6 +96,8 @@ async def clear(ctx, the_limit=100):
                         await message.delete()
                         break
 
+
+# spam_emote command
 
 @bot.command(name="spam_emote", help="Spams emotes continuoulsy (or a specified number of times) or one particular emote specified by the user")
 async def spam_emote(ctx, emote_name: str = "no emote", num_times: int = -1):
@@ -119,6 +139,25 @@ async def spam_emote(ctx, emote_name: str = "no emote", num_times: int = -1):
             await ctx.send(str(emoji) if emoji is not None else f"No emote with name {emote} found")
             spamming_emotes[the_guild] = False
 
+
+# spam command
+
+@bot.command(name="spam", help="Starts spamming whatever you want")
+async def spam(ctx, spam_input: str, num_times: int = -1):
+    print("Starting the spam:")
+    the_message: discord.Message = ctx.message
+
+    if(the_message):
+        await the_message.delete()
+        
+    for i in range(num_times):
+            spam = spam_input
+            await ctx.send(str(spam))
+
+        
+
+
+# read_movie command
 
 @bot.command(name='read_movie', help="Starts writing the movie script, line by line")
 async def read_movie(ctx, movie_name: str):
@@ -182,6 +221,8 @@ async def read_movie(ctx, movie_name: str):
     scripts_running[the_guild] = False
 
 
+# speak_movie command
+
 @bot.command(name="speak_movie", help="NOT WORKING-Joins a voice channel and starts reading the given movie")
 async def speak_movie(ctx, movie_name: str):
     print("running: speak_movie")
@@ -231,6 +272,8 @@ async def speak_movie(ctx, movie_name: str):
     await vc.disconnect()
 
 
+# stop command
+
 @bot.command(name="stop", help="Stops the bot from reading the movie script or spamming emotes, defaults to movies")
 async def stop(ctx, spam_type="movie"):
     print("running: stop")
@@ -253,6 +296,8 @@ async def stop(ctx, spam_type="movie"):
                 if(spamming_emotes[the_guild]):
                     await ctx.send("Stoping emote spam playback")
                     spamming_emotes[the_guild] = False
+                    
+
 
 
 @bot.event
